@@ -18,15 +18,18 @@ from .serializers import TicketSerializer
 
 import os
 
+
 @login_required(login_url='/signin')
 def bookTicketsUser(request):
     username = request.user.username
-    return render(request, 'my_system/my_user/book_tickets_user.html',{'username':username})
+    return render(request, 'my_system/my_user/book_tickets_user.html', {'username': username})
+
 
 @login_required(login_url='/signin')
 def cancelTicketsUser(request):
     username = request.user.username
-    return render(request, 'my_system/my_user/cancel_tickets_user.html',{'username':username})
+    return render(request, 'my_system/my_user/cancel_tickets_user.html', {'username': username})
+
 
 @login_required(login_url='/signin')
 def complaintsUser(request):
@@ -42,7 +45,8 @@ def complaintsUser(request):
         destination_station_r = request.POST.get('destinationStation')
         complaint_r = request.POST.get('complaint')
 
-        c = Complaint(username=username_r,  train_no=train_no_r,ticket_no=ticket_no_r,doj=doj_r, boarding_station=boarding_station_r,
+        c = Complaint(username=username_r, train_no=train_no_r, ticket_no=ticket_no_r, doj=doj_r,
+                      boarding_station=boarding_station_r,
                       destination_station=destination_station_r, complaint=complaint_r)
         c.save()
 
@@ -51,20 +55,24 @@ def complaintsUser(request):
         return render(request, 'my_system/my_user/complaints_user.html', {'c_flag': c_flag, 'username': username})
     return render(request, 'my_system/my_user/complaints_user.html', {'username': username})
 
+
 @login_required(login_url='/signin')
 def foreignHolidayUser(request):
     username = request.user.username
-    return render(request, 'my_system/my_user/holiday_foreign_user.html',{'username':username})
+    return render(request, 'my_system/my_user/holiday_foreign_user.html', {'username': username})
+
 
 @login_required(login_url='/signin')
 def indiaHolidayUser(request):
     username = request.user.username
-    return render(request, 'my_system/my_user/holiday_india_user.html',{'username':username})
+    return render(request, 'my_system/my_user/holiday_india_user.html', {'username': username})
+
 
 @login_required(login_url='/signin')
 def indexUser(request):
     username = request.user.username
-    return render(request, 'my_system/my_user/index_user.html',{'username':username})
+    return render(request, 'my_system/my_user/index_user.html', {'username': username})
+
 
 @login_required(login_url='/signin')
 def suggestUser(request):
@@ -80,9 +88,10 @@ def suggestUser(request):
 
         flag = 1
 
-        return render(request, 'my_system/my_user/index_user.html', {'flag': flag,'username':username})
+        return render(request, 'my_system/my_user/index_user.html', {'flag': flag, 'username': username})
     else:
-        return render(request, 'my_system/my_user/index_user.html', {'flag': flag,'username':username})
+        return render(request, 'my_system/my_user/index_user.html', {'flag': flag, 'username': username})
+
 
 @login_required(login_url='/signin')
 def animations(request):
@@ -111,8 +120,6 @@ def profile(request):
                                'mn': mn, 'occ': occ})
 
     return render(request, 'my_system/my_user/my_profile.html', {'username': username})
-
-
 
 
 def index(request):
@@ -184,7 +191,6 @@ class UserFormView(View):
             flag_userReg = 1
             return render(request, 'my_system/signup.html', {'flag_userReg': flag_userReg})
 
-
         return render(request, self.template_name, {'form': form, 'flag_userReg': flag_userReg})
 
 
@@ -209,13 +215,12 @@ class SignInFormView(View):
             return render(request, 'my_system/my_user/index_user.html',
                           {'flag_userSignIn': flag_userSignIn, 'username': username})
 
-
         return render(request, self.template_name, {'form': form, 'flag_userSignIn': flag_userSignIn})
+
 
 def signout(request):
     logout(request)
     return render(request, 'my_system/index.html')
-
 
 
 @login_required(login_url='/signin')
@@ -223,8 +228,9 @@ def searchTrainsUser(request):
     username = request.user.username
     if request.method == 'POST':
         from_r = request.POST.get('from')
+        from_r = from_r.lower()
         to_r = request.POST.get('to')
-
+        to_r = to_r.lower()
         req_t = {}
         all_trains = Train_Data.objects.all()
 
@@ -245,6 +251,7 @@ def searchTrainsUser(request):
             stops = f.readlines()
             print(stops)
             for stop in stops:
+                stop = stop.lower()
                 if to_r + '\n' == stop or to_r == stop:
                     flag_to = 1
                 if from_r + '\n' == stop or from_r == stop:
@@ -256,11 +263,10 @@ def searchTrainsUser(request):
                     break
 
             f.close()
-        req_t['username']=request.user.username
+        req_t['username'] = request.user.username
         return render(request, 'my_system/my_user/search_trains_user.html', req_t)
 
-    return render(request, 'my_system/my_user/search_trains_user.html',{'username':username})
-
+    return render(request, 'my_system/my_user/search_trains_user.html', {'username': username})
 
 
 """
@@ -307,4 +313,3 @@ class TicketView(APIView):
         ticket = get_object_or_404(Ticket.objects.all(), pk=pk)
         ticket.delete()
         return Response({"message": "Ticket with id `{}` has been deleted.".format(pk)}, status=204)
-

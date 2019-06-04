@@ -1,0 +1,180 @@
+{% extends 'my_system/index.html' %}
+{% load static %}
+{% block title %}Sign Up{% endblock %}
+{% block head %}
+    <style>
+
+        .signup {
+
+            background-image: url("{% static 'my_system/images/img5.jpg' %}");
+            background-position: center center;
+        }
+
+        form {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            opacity: 0.9;
+        }
+
+        .c {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+
+    {% if flag_userReg == 1 %}
+        <div class="container-fluid" style="margin-top: 10px;">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success" role="alert" style="text-align: center;">
+                        You have been registered successfully.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% elif flag_userReg == 0 %}
+        <div class="container-fluid" style="margin-top: 10px;">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger" role="alert" style="text-align: center;">
+                        Registration Unsuccessful
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="signup">
+        <div class="container bounceInDown animated wow">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-lg-10">
+                    <form action="{% url 'signup2' %}" method="post">
+                        {% csrf_token %}
+                        <div>
+                            <h2 style="text-align: center;margin:30px; font-family: 'Roboto Slab', serif;">Please fill
+                                in the form to Sign Up</h2>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="FirstName">First Name</label>
+                                <input type="text" class="form-control" id="FirstName" name="firstName"
+                                       placeholder="First Name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="LastName">Last Name</label>
+                                <input type="text" class="form-control" id="LastName" name="lastName"
+                                       placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Username">Username</label>
+                                <input type="text" class="form-control" id="Username" name="username"
+                                       placeholder="Username" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Password">Password</label>
+                                <input type="password" class="form-control" id="Password" name="password"
+                                       placeholder="Password" pattern=".{8,}"
+                                       title="Eight or more characters.Don't use a simple password." required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="Address">Address</label>
+                                <input type="text" class="form-control" id="Address" name="address"
+                                       placeholder="Address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <div>
+                                    Gender
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="inlineCheckbox1" name="gender"
+                                           value="male" required>
+                                    <label class="form-check-label" for="inlineCheckbox1">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="inlineCheckbox2" name="gender"
+                                           value="female">
+                                    <label class="form-check-label" for="inlineCheckbox2">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="inlineCheckbox3" name="gender"
+                                           value="transgender">
+                                    <label class="form-check-label" for="inlineCheckbox3">Transgender</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label for="DOB">Date of Birth</label>
+                                    <input type="date" id="DOB" name="dob" style="border-radius: 4px;" required>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" name="email"
+                                       placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label for="mnumber">Mobile Number</label>
+                                <input type="text" class="form-control" id="mnumber" name="mobileNumber"
+                                       placeholder="Mobile Number" pattern="[0-9]{10}"
+                                       title="Enter a valid mobile number." required>
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+                                <label for="Occupation">Occupation</label>
+                                <select id="Occupation" name="occupation"
+                                        style="display: block;height:38px;border-radius: 4px;width:100%;" required>
+                                    <option value="none">None</option>
+                                    <option value="government">Government</option>
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                    <option value="student">Student</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <div class="c">
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                        <div class="forgotPassword c">
+                            <a href="{% url 'signin' %}">Already have an account?</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

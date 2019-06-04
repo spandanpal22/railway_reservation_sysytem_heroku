@@ -1,0 +1,209 @@
+{% extends 'my_system/my_user/index_user.html' %}
+
+{% load static %}
+{% block title %}Indian Holidays{% endblock %}
+{% block head %}
+    <style>
+
+        p {
+            text-align: justify;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .dimg {
+            padding-bottom: 20px;
+            text-align: center;
+
+        }
+
+        .here{
+        box-shadow: 4px 4px 4px black;
+        text-align: center;
+        width: 350px;
+    }
+
+        h4 {
+            font-family: 'Roboto Slab', serif;
+
+        }
+
+        .d1, .d2, .d3, .d4, .d5, .d6 {
+            padding: 5px;
+
+        }
+
+        .d1 {
+            background-color: #fffea1;
+        }
+
+        .d2 {
+            background-color: #e4c1ff;
+        }
+
+        .d3 {
+            background-color: #3afffd;
+        }
+
+        .d4 {
+            background-color: #ffaca3;
+        }
+
+        .d5 {
+            background-color: #45ffb1;
+        }
+
+        .d6 {
+            background-color: #cac6ff;
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row d1 fadeInDown animated wow">
+            <div class="col">
+                <h4 style="text-align: center;">Destination 1</h4>
+            </div>
+        </div>
+        <div class="row d1 fadeInDown animated wow">
+             <div class="col-lg-6 dimg">
+                <img class="here rotateIn animated wow" data-wow-delay="1s" src="{% static 'my_system/images/d1ie.jpg' %}" alt="Destination 1">
+            </div>
+            <div class="col-lg-6">
+
+                <p>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat.
+                </p>
+            </div>
+
+        </div>
+        <div class="row d2 bounceInUp animated wow">
+            <div class="col">
+                <h4 style="text-align: center;">Destination 2</h4>
+            </div>
+        </div>
+        <div class="row d2 bounceInUp animated wow">
+
+            <div class="col-lg-6">
+
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+            </div>
+             <div class="col-lg-6 dimg">
+                <img class="here rotateIn animated wow" data-wow-delay="1s" src="{% static 'my_system/images/d2ie.jpg' %}" alt="Destination 2">
+            </div>
+        </div>
+        <div class="row d3 flipInY animated wow">
+            <div class="col">
+                <h4 style="text-align: center;">Destination 3</h4>
+            </div>
+        </div>
+        <div class="row d3 flipInY animated wow">
+            <div class="col-lg-6 dimg">
+                <img class="here rotateIn animated wow" data-wow-delay="1s" src="{% static 'my_system/images/d3ie.jpg' %}" alt="Destination 3">
+            </div>
+            <div class="col-lg-6">
+
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+            </div>
+
+        </div>
+        <div class="row d4 zoomInDown animated wow">
+            <div class="col">
+                <h4 style="text-align: center;">Destination 4 </h4>
+            </div>
+        </div>
+        <div class="row d4 zoomInDown animated wow">
+
+            <div class="col-lg-6">
+
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+            </div>
+            <div class="col-lg-6 dimg">
+                <img class="here rotateIn animated wow" data-wow-delay="1s" src="{% static 'my_system/images/d4ie.jpg' %}" alt="Destination 4">
+            </div>
+        </div>
+        <div class="row d5 jackInTheBox animated wow">
+            <div class="col">
+                <h4 style="text-align: center;">Destination 5</h4>
+            </div>
+        </div>
+        <div class="row d5 jackInTheBox animated wow">
+            <div class="col-lg-6 dimg">
+                <img class="here rotateIn animated wow" data-wow-delay="1s" src="{% static 'my_system/images/d5ie.jpg' %}" alt="Destination 5">
+            </div>
+            <div class="col-lg-6">
+
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+            </div>
+
+        </div>
+        <div class="row d6 lightSpeedIn animated wow">
+            <div class="col">
+                <h4 style="text-align: center;">Destination 6</h4>
+            </div>
+        </div>
+        <div class="row d6 lightSpeedIn animated wow">
+
+            <div class="col-lg-6">
+
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+            </div>
+            <div class="col-lg-6 dimg">
+                <img class="here rotateIn animated wow" data-wow-delay="1s" src="{% static 'my_system/images/d6ie.jpg' %}" alt="Destination 6">
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

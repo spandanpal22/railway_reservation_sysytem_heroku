@@ -1,0 +1,121 @@
+{% extends 'my_system/my_user/index_user.html' %}
+{% load static %}
+{% block title %}Complaints{% endblock %}
+{% block head %}
+    <style>
+
+        .complaint {
+            background-image: url("{% static 'my_system/images/complaintsBG.jpg' %}");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+
+        form {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            opacity: 0.9;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+     {% if c_flag == 1 %}
+        <div class="container-fluid" style="margin-top: 10px;">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success" role="alert" style="text-align: center;">
+                        You complaint has been successfully registered.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% elif c_flag == 0 %}
+        <div class="container-fluid" style="margin-top: 10px;">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger" role="alert" style="text-align: center;">
+                        Couldn't register your complaint. Please try again.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <div class="complaint">
+        <div class="container jackInTheBox animated wow" >
+
+
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-lg-10">
+                    <form action="{% url 'complaints_user' %}" method="post">
+                        {% csrf_token %}
+                        <div>
+                            <h2 style="text-align: center;margin:30px; font-family: 'Roboto Slab', serif;">Please fill
+                                in the details below <br>to register your complaint</h2>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="Username">Username</label>
+                                <input type="text" class="form-control" id="Username" name="username"
+                                          placeholder="{{ username }}" required readonly="readonly">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="TrainNumber">Train Number</label>
+                                <input type="text" class="form-control" id="TrainNumber" name="trainNumber" maxlength="5"
+                                       placeholder="Train Number" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="TicketNumber">Ticket Number</label>
+                                <input type="text" class="form-control" id="TrainNumber" name="ticketNumber" maxlength="8"
+                                       placeholder="Ticket Number" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="DOJ">Date of Journey</label>
+                                <input type="date" class="form-control" id="DOJ" name="doj"
+                                       placeholder="Ticket Number" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="BoardingStation">Boarding Station</label>
+                                <input type="text" class="form-control" id="BoardingStation" name="boardingStation"
+                                       placeholder="Boarding Station" required>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="DestinationStation">Destination Station</label>
+                                <input type="text" class="form-control" id="DestinationStation"
+                                       name="destinationStation" placeholder="Destination Station" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="Complaint">Your Complaint</label>
+                                <textarea type="text" class="form-control" id="Complaint" name="complaint"
+                                          placeholder="Your Complaint" required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="margin-bottom: 2rem;">Submit</button>
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

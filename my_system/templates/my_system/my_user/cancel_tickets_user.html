@@ -1,7 +1,66 @@
 {% extends 'my_system/my_user/index_user.html' %}
 {% block title %}Cancel Tickets{% endblock %}
-{% block head %}{% endblock %}
+{% block head %}
+        <style>
+        .tic{
+            background-color: #69ff50;
+        }
+        form {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            opacity: 0.9;
+        }
+        </style>
+{% endblock %}
 {% block content %}
-<h1 style="text-align: center;color: red;">Page Under Construction</h1>
+    <div class="tic">
+    <div class="container rotateInDownLeft animated wow">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-lg-8">
+            <form action="{% url 'cancel_tickets_user' %}" method="post">
+                        {% csrf_token %}
+                        <div>
+                            <h2 style="text-align: center;margin:30px; font-family: 'Roboto Slab', serif;">Cancel your ticket by filling the form</h2>
+                        </div>
 
+
+                        <div class="form-row" style="text-align: center;">
+                            <div class="form-group col-md-12">
+                                <label for="Tid">Enter your Ticket ID </label>
+                                <input type="text" class="form-control" id="Tid" name="tid" style="text-align: center;"
+                                       placeholder="Ticket ID" required>
+                            </div>
+
+                        </div>
+
+                        {% if f == 0 %}
+                        <div class="form-row" style="text-align: center;">
+                            <div class="form-group col-md-12" style="color: red;">
+                                <b>Enter correct Ticket ID.</b>
+                            </div>
+                        </div>
+                        {% elif f == 1 %}
+                            <div class="form-row" style="text-align: center;">
+                            <div class="form-group col-md-12" style="color: blue;">
+                                Your ticket has been successfully cancelled.
+                            </div>
+                        </div>
+
+                        {% endif %}
+
+                        <div style="text-align: center;margin-bottom: 10px;">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+
+                    </form>
+        </div>
+        <div class="col"></div>
+
+        </div>
+    </div>
+    </div>
 {% endblock %}

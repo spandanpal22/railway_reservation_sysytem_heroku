@@ -2,9 +2,9 @@
 {% load static %}
 {% block brand-logo %}{% url 'home_user' %}{% endblock %}
 {% block home %}{% url 'home_user' %}{% endblock %}
-{% block book-tickets %}{% url 'api' %}{% endblock %}
-{% block cancel-tickets %}{% url 'api' %}{% endblock %}
-{% block view-tickets %}{% url 'api' %}{% endblock %}
+{% block book-tickets %}{% url 'book_tickets_user' %}{% endblock %}
+{% block cancel-tickets %}{% url 'cancel_tickets_user' %}{% endblock %}
+{% block view-tickets %}{% url 'view_tickets_user' %}{% endblock %}
 {% block search-trains %}{% url 'search_trains_user' %}{% endblock %}
 {% block foreign %}{% url 'holiday_foreign_user' %}{% endblock %}
 {% block india %}{% url 'holiday_india_user' %}{% endblock %}

@@ -66,11 +66,11 @@
                     Ticketing
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{% block book-tickets %}{% url 'api' %}{% endblock %}">Book
+                    <a class="dropdown-item" href="{% block book-tickets %}{% url 'book_tickets_user' %}{% endblock %}">Book
                         Tickets</a>
-                    <a class="dropdown-item" href="{% block cancel-tickets %}{% url 'api' %}{% endblock %}">Cancel
+                    <a class="dropdown-item" href="{% block cancel-tickets %}{% url 'cancel_tickets_user' %}{% endblock %}">Cancel
                         Tickets</a>
-                    <a class="dropdown-item" href="{% block view-tickets %}{% url 'api' %}{% endblock %}">View
+                    <a class="dropdown-item" href="{% block view-tickets %}{% url 'view_tickets_user' %}{% endblock %}">View
                         Tickets</a>
                 </div>
             </li>

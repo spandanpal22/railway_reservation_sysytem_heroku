@@ -17,18 +17,88 @@ from rest_framework import status
 from .serializers import TicketSerializer
 
 import os
+import requests
+import json
 
 
 @login_required(login_url='/signin')
 def bookTicketsUser(request):
     username = request.user.username
-    return render(request, 'my_system/my_user/book_tickets_user.html', {'username': username})
+
+    f=0
+
+    url = "http://127.0.0.1:8000/api"
+    response = requests.request("GET", url)
+    response = json.loads(response.text)
+    t = {}
+    for resp in response:
+        t = resp
+    ticket_no = int(t['ticket_no']) + 1
+    tid = int(t['id']) + 1
+
+    if request.method == 'POST':
+        data = {}
+        data['id'] = tid
+        data['name'] = username
+        data['address'] = request.POST.get('address')
+        data['mobileNo'] = request.POST.get('mobileNo')
+        data['email'] = request.POST.get('email')
+        data['dob'] = request.POST.get('dob')
+        data['from_station'] = request.POST.get('from_station')
+        data['to_station'] = request.POST.get('to_station')
+        data['doj'] = request.POST.get('doj')
+        data['ticket_no'] = ticket_no
+        data['train_no'] = request.POST.get('train_no')
+        data['train_name'] = request.POST.get('train_name')
+        response = requests.post(url, data)
+        f=1
+
+    return render(request, 'my_system/my_user/book_tickets_user.html',
+                  {'username': username, 'tid': tid, 'ticket_no':ticket_no,'f':f})
 
 
 @login_required(login_url='/signin')
 def cancelTicketsUser(request):
     username = request.user.username
+    if request.method == 'POST':
+        url = "http://127.0.0.1:8000/api"
+        response = requests.request("GET", url)
+        response = json.loads(response.text)
+        arr = []
+        arr2 = []
+        f = 1
+        for resp in response:
+            if resp['name'] == username:
+                arr.append(resp)
+        for i in arr:
+            arr2.append(i['id'])
+
+        ticket_id_r = int(request.POST.get('tid'))
+
+        if ticket_id_r in arr2:
+            url = "http://127.0.0.1:8000/api/{0}".format(ticket_id_r)
+            response = requests.request("DELETE", url)
+            print(response)
+        else:
+            f = 0
+        return render(request, 'my_system/my_user/cancel_tickets_user.html', {'username': username, 'f': f})
+
     return render(request, 'my_system/my_user/cancel_tickets_user.html', {'username': username})
+
+
+@login_required(login_url='/signin')
+def viewTicketsUser(request):
+    username = request.user.username
+    url = "http://127.0.0.1:8000/api"
+    response = requests.request("GET", url)
+    response = json.loads(response.text)
+    arr = []
+    f = 0
+    for resp in response:
+        if resp['name'] == username:
+            arr.append(resp)
+            f = 1
+    return render(request, 'my_system/my_user/view_tickets_user.html', {'username': username, 'arr': arr, 'f': f})
 
 
 @login_required(login_url='/signin')

@@ -27,7 +27,7 @@ def bookTicketsUser(request):
 
     f=0
 
-    url = "http://127.0.0.1:8000/api"
+    url = "http://spandan-project.herokuapp.com/api"
     response = requests.request("GET", url)
     response = json.loads(response.text)
     t = {}
@@ -61,7 +61,7 @@ def bookTicketsUser(request):
 def cancelTicketsUser(request):
     username = request.user.username
     if request.method == 'POST':
-        url = "http://127.0.0.1:8000/api"
+        url = "http://spandan-project.herokuapp.com/api"
         response = requests.request("GET", url)
         response = json.loads(response.text)
         arr = []
@@ -76,7 +76,7 @@ def cancelTicketsUser(request):
         ticket_id_r = int(request.POST.get('tid'))
 
         if ticket_id_r in arr2:
-            url = "http://127.0.0.1:8000/api/{0}".format(ticket_id_r)
+            url = "http://spandan-project.herokuapp.com/api/{0}".format(ticket_id_r)
             response = requests.request("DELETE", url)
             print(response)
         else:
@@ -89,7 +89,7 @@ def cancelTicketsUser(request):
 @login_required(login_url='/signin')
 def viewTicketsUser(request):
     username = request.user.username
-    url = "http://127.0.0.1:8000/api"
+    url = "http://spandan-project.herokuapp.com/api"
     response = requests.request("GET", url)
     response = json.loads(response.text)
     arr = []

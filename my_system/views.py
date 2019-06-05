@@ -349,7 +349,7 @@ class TicketView(APIView):
         tickets = Ticket.objects.all()
         # the many param informs the serializer that it will be serializing more than a single article.
         serializer = TicketSerializer(tickets, many=True)
-        return Response({"tickets": serializer.data})
+        return Response(serializer.data)
 
     def post(self, request):
         ticket = request.data.get('ticket')

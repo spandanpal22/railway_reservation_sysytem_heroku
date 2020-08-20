@@ -322,7 +322,7 @@ def searchTrainsUser(request):
             print(stops)
             for stop in stops:
                 stop = stop.lower()
-                if to_r + '\n' == stop or to_r == stop:
+                if (to_r + '\n' == stop or to_r == stop) and flag_from==1:
                     flag_to = 1
                 if from_r + '\n' == stop or from_r == stop:
                     flag_from = 1
